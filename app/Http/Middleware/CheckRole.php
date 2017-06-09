@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
@@ -15,6 +16,18 @@ class CheckRole
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $roles =$this->getRequiredRoleForRoute($request->route());
+        if($request->user()->hasRole($roles) || !$roles)
+        {
+            return $next($request);
+        }
+
+        return redirect()->route('noPermission');
+    }
+
+    private function getRequiredRoleForRoute($route)
+    {
+        $actions = $route->getAction();
+        return isset($actions['roles']) ? $actions ['roles'] : null;
     }
 }

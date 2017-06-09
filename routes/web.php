@@ -18,4 +18,4 @@ Route::get('logout',['as'=>'logout','LoginController@getLogout']);
 
 Route::group(['middleware'=>['authen','roles']],function(){
 	Route::get('/dashboard', ['as'=>'dashboard','uses'=>'DashboardController@dashboard']);
-})
+});
