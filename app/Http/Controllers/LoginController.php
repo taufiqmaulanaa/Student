@@ -15,9 +15,9 @@ class LoginController extends Controller
     public function getLogin()
     {
     	if(Auth::guard('web')->check())
-    	{
-    		return redirect()->route('dashboard');
-    	}
+        {
+    	return redirect()->route('dashboard');
+	   }
     	return view('login');
     }
 

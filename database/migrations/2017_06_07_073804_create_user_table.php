@@ -23,7 +23,6 @@ class CreateUserTable extends Migration
             $table->rememberToken();
             $table->boolean('active');
             $table->timestamps();
-            $table->foreign('role_id')->refrences('id')->on('roles');
         });
     }
 
