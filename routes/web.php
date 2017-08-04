@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', ['as'=>'/','uses'=>'LoginController@getLogin']);
-Route::post('/login',['as'=>'login','LoginController@postLogin']);
 
-Route::get('logout',['as'=>'logout','LoginController@getLogout']);
+Route::get('/', 'LoginController@getLogin');
+Route::get('/login', 'LoginController@getLogin');
+Route::post('/login', 'LoginController@postLogin');
+
 
 Route::group(['middleware'=>['authen','roles']],function(){
+	Route::get('/logout',['as'=>'logout','uses'=>'LoginController@getLogout']);
 	Route::get('/dashboard', ['as'=>'dashboard','uses'=>'DashboardController@dashboard']);
 });

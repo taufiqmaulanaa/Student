@@ -11,7 +11,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
     protected $username = 'username';
     protected $redirectTo = '/dashboard';
-    protected $gurad='web';
+    protected $guard='web';
 
     public function getLogin()
     {
@@ -24,7 +24,7 @@ class LoginController extends Controller
 
     public function postLogin(Request $request)
     {
-    	$auth = Auth::gurad('web')->attemp(['username'=>$request->username,'password'=>$request->password,'active'=>1]);
+    	$auth = Auth::guard('web')->attempt(['username'=>$request->username,'password'=>$request->password,'active'=>1]);
 
     	if($auth)
     	{

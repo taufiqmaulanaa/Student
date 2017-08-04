@@ -18,7 +18,7 @@
     </head>
       <body class="login-img3-body">
         <div class="container">
-          <form class="login-form" action="{{ route('login')}}" method="POST">
+          <form class="login-form" action="{{url('/login')}}" method="POST">
             {!! csrf_field() !!}        
             <div class="login-wrap">
                 <p class="login-img"><i class="icon_lock_alt"></i></p>

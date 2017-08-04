@@ -17,6 +17,6 @@ class RoleTableSeeder extends Seeder
             ['name'=>'Receipttionist'],
             ['name'=>'Manager'],
             ['name'=>'CEO']
-        	])
+        	]);
     }
 }
